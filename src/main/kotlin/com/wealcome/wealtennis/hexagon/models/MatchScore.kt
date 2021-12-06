@@ -2,8 +2,6 @@ package com.wealcome.wealtennis.hexagon.models
 
 class MatchScore {
 
-    private val possibleScores: List<String> = listOf("0", "15", "30", "40", "GAME")
-
     fun computeNextScore(matchScore: Pair<String, String>, scoringPlayer: Int): Pair<String, String> {
         if (scoringPlayer == 1) {
             if (isDeuce(matchScore))
@@ -28,6 +26,10 @@ class MatchScore {
 
     private fun isDeuce(matchScore: Pair<String, String>): Boolean {
         return matchScore.first == "40" && matchScore.second == "40"
+    }
+
+    companion object MatchScore {
+        private val possibleScores: List<String> = listOf("0", "15", "30", "40", "GAME")
     }
 
 }
