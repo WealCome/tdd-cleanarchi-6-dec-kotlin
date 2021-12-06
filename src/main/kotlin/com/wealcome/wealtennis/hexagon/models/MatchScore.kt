@@ -1,6 +1,6 @@
-package com.wealcome.wealtennis
+package com.wealcome.wealtennis.hexagon.models
 
-class ScoreComputation {
+class MatchScore {
 
     private val possibleScores: List<String> = listOf("0", "15", "30", "40", "GAME")
 

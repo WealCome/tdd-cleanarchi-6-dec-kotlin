@@ -1,11 +1,15 @@
 package com.wealcome.wealtennis
 
+import com.wealcome.wealtennis.adapters.secondary.gateways.InMemoryMatchScoreRepository
+import com.wealcome.wealtennis.hexagon.usecases.MatchArbitrator
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class MatchArbitratorTest {
 
-    private val computeMatchScore = MatchArbitrator()
+    private val matchScoreRepository: InMemoryMatchScoreRepository =
+        InMemoryMatchScoreRepository()
+    private val computeMatchScore = MatchArbitrator(matchScoreRepository)
 
     @Test
     fun `Any match should start with no point`() {
@@ -92,11 +96,11 @@ class MatchArbitratorTest {
     }
 
     private fun assertCurrentScore(expectedScore: Pair<String, String>) {
-        assertThat(computeMatchScore.currentScore()).isEqualTo(expectedScore)
+        assertThat(matchScoreRepository.currentScore()).isEqualTo(expectedScore)
     }
 
     private fun assertPlayerWon(player: Int) {
-        assertThat(computeMatchScore.hasWon(player)).isTrue;
+        assertThat(computeMatchScore.hasWon(player)).isTrue
     }
 
 }

@@ -1,20 +1,24 @@
-package com.wealcome.wealtennis
+package com.wealcome.wealtennis.hexagon.usecases
 
-class MatchArbitrator {
+import com.wealcome.wealtennis.hexagon.gateways.MatchScoreRepository
+import com.wealcome.wealtennis.hexagon.models.MatchScore
+
+class MatchArbitrator constructor(
+    private val matchScoreRepository: MatchScoreRepository
+) {
 
     private var matchScore = Pair("0", "0")
     private var winningPlayer: Int? = null
 
     fun computeNextScore(scoringPlayer: Int) {
         matchScore = nextScore(scoringPlayer)
+        if(!isMatchOver(scoringPlayer))
+            saveScore()
         if (isMatchOver(scoringPlayer)) {
             winningPlayer = scoringPlayer
             resetMatch()
+            saveScore()
         }
-    }
-
-    fun currentScore(): Pair<String, String> {
-        return matchScore
     }
 
     fun hasWon(player: Int): Boolean {
@@ -22,7 +26,7 @@ class MatchArbitrator {
     }
 
     private fun nextScore(scoringPlayer: Int) =
-        ScoreComputation().computeNextScore(matchScore, scoringPlayer)
+        MatchScore().computeNextScore(matchScore, scoringPlayer)
 
     private fun isMatchOver(scoringPlayer: Int): Boolean =
         scoringPlayer == 1 && matchScore.first == "GAME"
@@ -30,6 +34,10 @@ class MatchArbitrator {
 
     private fun resetMatch() {
         matchScore = Pair("0", "0")
+    }
+
+    private fun saveScore() {
+        matchScoreRepository.save(matchScore)
     }
 
 }
