@@ -1,0 +1,14 @@
+WealTennis
+Gestion des tournois de tennis
+
+Le but c'est de gérer un tournoi de tennis avec 8 joueurs.
+Le gagnant d'un match est celui qui gagne un jeu au tennis.
+Le but final est de désigner le grand gagnant.
+
+0  0
+15 0
+15 15
+30 15
+30 30
+40 40
+GAME
