@@ -37,10 +37,6 @@ class MatchScore constructor(
         return MatchScore(Pair("0", "0"))
     }
 
-    fun reset(): MatchScore {
-        return MatchScore(Pair("0", "0"))
-    }
-
     private fun nextScore(fromScore: String): String {
         return possibleScores[possibleScores.indexOf(fromScore) + 1]
     }
@@ -60,17 +56,6 @@ class MatchScore constructor(
 
         return true
     }
-
-    override fun hashCode(): Int {
-        var result = score.hashCode()
-        result = 31 * result + (winningPlayer ?: 0)
-        return result
-    }
-
-    override fun toString(): String {
-        return "MatchScore(score=$score, winningPlayer=$winningPlayer)"
-    }
-
 
     companion object MatchScoreCompanion {
         private val possibleScores: List<String> = listOf("0", "15", "30", "40", "GAME")

@@ -12,3 +12,11 @@ Le but final est de désigner le grand gagnant.
 30 30
 40 40
 GAME
+
+
+Afficher la prochaine alarme activée sélectionnée
+Une liste d’alarme
+Afficher la première active
+Si on désactive une alarme, pouvoir afficher la prochaine qui est activée
+Si toutes les alarmes sont désactivées, on affiche la prochaine alarme dans le temps configuré activable
+Si aucune alarme, text vide

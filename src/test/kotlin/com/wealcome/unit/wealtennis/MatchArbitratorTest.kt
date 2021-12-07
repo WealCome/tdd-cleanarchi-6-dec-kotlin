@@ -1,4 +1,4 @@
-package com.wealcome.wealtennis
+package com.wealcome.unit.wealtennis
 
 import com.wealcome.wealtennis.adapters.secondary.gateways.InMemoryMatchScoreRepository
 import com.wealcome.wealtennis.hexagon.models.MatchScore
